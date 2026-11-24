@@ -1,0 +1,60 @@
+{
+  "name": "browser-file-room",
+  "version": "0.1.0",
+  "description": "Direct cross-platform file, text, and link transfer in the browser, CLI, and MCP over WebRTC.",
+  "homepage": "https://1210.ipocket.xyz/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iPocket-APP/OneToTen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iPocket-APP/OneToTen/issues"
+  },
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "file-room": "./dist-agent/agent/cli.js"
+  },
+  "engines": {
+    "node": "^22.23.0 || ^24.22.0 || ^26.12.0"
+  },
+  "scripts": {
+    "dev": "cf dev",
+    "build": "cf build",
+    "build:agent": "tsc -p tsconfig.agent.json",
+    "cli": "node dist-agent/agent/cli.js",
+    "mcp": "node dist-agent/agent/cli.js mcp",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.browser.json && tsc -p tsconfig.worker.json && tsc -p tsconfig.tools.json && tsc -p tsconfig.agent.json --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "test:e2e": "npm run build:agent && playwright test",
+    "deploy": "cf deploy"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.4.0",
+    "@noble/hashes": "2.4.0",
+    "lucide-react": "1.77.0",
+    "node-datachannel": "0.33.6",
+    "qrcode": "1.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "ws": "8.21.0",
+    "zod": "4.6.6"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "2.0.0-rc.3",
+    "@cloudflare/workers-types": "5.20261123.1",
+    "@modelcontextprotocol/client": "2.4.0",
+    "@playwright/test": "1.65.1",
+    "@types/node": "^22.0.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/ws": "8.18.1",
+    "@vitejs/plugin-react": "6.3.0",
+    "cf": "1.0.0-rc.2",
+    "typescript": "7.0.2",
+    "vite": "8.3.8"
+  }
+}
